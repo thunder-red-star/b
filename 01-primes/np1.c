@@ -15,7 +15,6 @@ int main() {
         }
         if (isPrime) {
             primeCount++;
-            printf("Found prime %d, count is %d\n", startValue, primeCount);
         }
         startValue++;
     }
