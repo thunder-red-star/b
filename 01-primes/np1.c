@@ -1,5 +1,5 @@
 #include <stdio.h>
-c
+
 int main(int argc, char *argv[]) {
     int primeCount = 0;
     int startValue = 2;
