@@ -1,0 +1,28 @@
+WRITE 0,C1
+WRITE 0,C2
+WRITE 0,C3
+
+NEXT
+
+read-loop-point:
+
+READ-PROP 2,C6
+READ-PROP 3,C7
+INC C1
+ADD C2,C6,C2
+ADD C3,C7,C3
+
+NEXT
+
+JUMP-IF-EOF finish
+JUMP read-loop-point
+
+finish:
+DIV C2,C1,C4
+DIV C3,C1,C5
+SAY "Average age is "
+SAY C4
+SAY "\n"
+SAY "Average grade is "
+SAY C5
+STOP

@@ -1,0 +1,11 @@
+# Project exclude paths
+/cmake-build-debug/
+
+# Idea
+.idea
+
+# VS Code
+.vscode
+
+# .out files
+*.out

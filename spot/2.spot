@@ -1,0 +1,15 @@
+WRITE 3,C1
+WRITE 7,C2
+
+WRITE C1,C3
+DEC C2
+
+loop-begin-point:
+
+SAY C3
+SAY ","
+INC C3
+JUMP-IF-GT loop-begin-point,C2,C3
+
+after-loop-point:
+SAY C3

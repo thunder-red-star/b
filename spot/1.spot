@@ -1,0 +1,23 @@
+WRITE 7,C1
+WRITE 3,C2
+
+MOD C1,C2,C3
+
+JUMP-IF-EQ is-divisible,C3,0
+JUMP not-divisible
+
+is-divisible:
+
+SAY C2
+SAY " in C2 divides "
+SAY C1
+SAY " in C1 evenly"
+STOP
+
+not-divisible:
+
+SAY C2
+SAY " in C2 does not divide "
+SAY C1
+SAY " in C1 evenly"
+STOP

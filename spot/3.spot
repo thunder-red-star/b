@@ -1,0 +1,21 @@
+WRITE "",C1
+WRITE "",C2
+
+read-loop-point:
+
+READ-PROP 2,C1
+READ-PROP 1,C2
+
+SAY C1
+SAY ", "
+SAY C2
+SAY "\n"
+
+NEXT
+
+JUMP-IF-EOF finish
+JUMP read-loop-point
+
+finish:
+
+STOP

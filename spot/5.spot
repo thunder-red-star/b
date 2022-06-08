@@ -1,0 +1,23 @@
+WRITE 8,C1
+
+WRITE 1,C2
+WRITE 1,C3
+
+SAY "1 1 "
+
+WRITE 2,C4
+
+fibonacci-loop-start:
+ADD C2,C3,C5
+WRITE C3,C2
+WRITE C5,C3
+
+SAY C5
+SAY " "
+INC C4
+
+JUMP-IF-GE finish,C4,C1
+JUMP fibonacci-loop-start
+
+finish:
+STOP
