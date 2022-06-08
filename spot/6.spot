@@ -1,0 +1,28 @@
+WRITE 3,C10
+
+SAY C10
+SAY ": "
+SAY C10
+SAY " "
+
+3k-plus-1:
+MOD C10,2,C1
+JUMP-IF-EQ finish,C10,1
+JUMP-IF-EQ div-by-2,C1,0
+JUMP-IF-EQ mult-3-add-1,C1,1
+
+div-by-2:
+DIV C10,2,C10
+SAY C10
+SAY " "
+JUMP 3k-plus-1
+
+mult-3-add-1:
+MUL C10,3,C10
+ADD C10,1,C10
+SAY C10
+SAY " "
+JUMP 3k-plus-1
+
+finish:
+STOP
