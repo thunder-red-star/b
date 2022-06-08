@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-// Find the millionth prime number without any optimizations.
-
 int main() {
     int primeCount = 0;
     int startValue = 2;
