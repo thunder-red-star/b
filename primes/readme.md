@@ -20,7 +20,7 @@ All precompiled binaries work on Linux WSL kernel only. Don't expect them to wor
 All benchmarks found in `notes` files are run on the following machine:
 
     CPU: Intel Core i7-10750H (6C/12T) @ 2.6GHz (boost 5.0GHz)
-    RAM: 7.7 GB
+    RAM: 7.7 GB (allocated to VM)
     GPU: NVIDIA GeForce RTX 2060, 6GB
     OS: Ubuntu 22.04 LTS on WSL
     SSD: PC SN730 NVMe SSD (512GB)
