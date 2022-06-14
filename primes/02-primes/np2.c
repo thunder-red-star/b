@@ -15,12 +15,12 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     while (primeCount < endValue) {
-        if (startValue % 2 == 0) {
+        if (startValue % 2 == 0 && startValue != 2) {
             startValue++;
             continue;
         }
         int isPrime = 1;
-        int maxDivisor = (int) sqrt(startValue);
+        int maxDivisor = (int) sqrt(startValue) + 1;
         for (int i = 3; i < maxDivisor; i += 2) {
             if (startValue % i == 0) {
                 isPrime = 0;
