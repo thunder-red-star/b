@@ -1,0 +1,1 @@
+gcc np2.c -o np2 -lm

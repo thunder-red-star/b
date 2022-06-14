@@ -1,0 +1,1 @@
+clang np1.c -o np1

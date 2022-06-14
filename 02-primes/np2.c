@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int main(int argc, char *argv[]) {
     int primeCount = 0;
@@ -14,8 +15,13 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     while (primeCount < endValue) {
+        if (startValue % 2 == 0) {
+            startValue++;
+            continue;
+        }
         int isPrime = 1;
-        for (int i = 2; i < startValue; i++) {
+        int maxDivisor = (int) sqrt(startValue);
+        for (int i = 3; i < maxDivisor; i += 2) {
             if (startValue % i == 0) {
                 isPrime = 0;
                 break;
@@ -24,7 +30,7 @@ int main(int argc, char *argv[]) {
         if (isPrime) {
             primeCount++;
         }
-        startValue++;
+        startValue += 1;
     }
     printf("%d\n", startValue - 1);
     return 0;
