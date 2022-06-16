@@ -32,3 +32,4 @@ I will be testing on another computer soon, but with a native Ubuntu 22.04 kerne
     GPU: AMD Radeon HD Graphics 6950, 2GB
     OS: Ubuntu 22.04 LTS
     SSD: Samsung 970 EVO SSD (512GB)
+

@@ -1,0 +1,1 @@
+gcc np3.c -o np3 -lm
