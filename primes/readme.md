@@ -28,7 +28,7 @@ All benchmarks found in `notes` files are run on the following machine:
 I will be testing on another computer soon, but with a native Ubuntu 22.04 kernel, rather than a VM. The machine will have the following hardware:
 
     CPU: Intel Core i7-7820X (8C/16T) @ 3.6GHz (boost 4.5GHz)
-    RAM: 31.2 GB
+    RAM: 23.7 GB
     GPU: AMD Radeon HD Graphics 6950, 2GB
     OS: Ubuntu 22.04 LTS
     SSD: Samsung 970 EVO SSD (512GB)

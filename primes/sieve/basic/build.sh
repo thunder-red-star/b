@@ -1,0 +1,1 @@
+gcc -o sieve sieve.c

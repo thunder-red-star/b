@@ -1,0 +1,1 @@
+gcc -o sieve bitarray.c sieve.c

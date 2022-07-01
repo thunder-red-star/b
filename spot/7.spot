@@ -1,78 +1,33 @@
-# Start by preparing the first cards with data about the lottery datafile
-WRITE 0,C1
-WRITE 0,C99
+WRITE 3,C10
+WRITE C10,C99
 
-# Scan the data file and increment the counter for each line
-read-next-line-and-increment-counter:
-NEXT
-JUMP-IF-EOF finish-scan
-READ-PROP 1,C2
-ADD C1,100,C99
-WRITE-TO-IND C2,C99,C1
-INC C1
+WRITE 0,C20
 
-JUMP read-next-line-and-increment-counter
+3k-plus-1:
+MOD C10,2,C1
+JUMP-IF-EQ finish,C10,1
+JUMP-IF-EQ div-by-2,C1,0
+JUMP-IF-EQ mult-3-add-1,C1,1
 
-# Finish the scan
-finish-scan:
-REWIND
+div-by-2:
+DIV C10,2,C10
+WRITE-TO-IND C10,100,C20
+INC C20
+JUMP 3k-plus-1
 
-# Store important variables for our ordered printout
-# Count number of passes
-WRITE 0,C5
-# Count element number
-WRITE 0,C6
-# Count last printed value
-WRITE 0,C7
-# Count last comparison
-WRITE 999,C8
-# Name of person
-WRITE 0,C9
+mult-3-add-1:
+MUL C10,3,C10
+ADD C10,1,C10
+WRITE-TO-IND C10,100,C20
+INC C20
+JUMP 3k-plus-1
 
-# What we will do here is make passes of the data that will print out the people by ascending lottery number.
-# For every pass over the data, we will find the minimum value that is not printed yet and print it.
-# We will then increment the counter for pass number.
-
-JUMP ordered-printout-pass-element
-
-ordered-printout-pass:
-JUMP-IF-EQ finish,C5,C1
-WRITE 0,C6
-# Print the minimum value that is not printed yet
-SAY C9
+print-one-back:
+DEC C20
+WRITE-FROM-IND 100,C20,C4
+SAY C4
 SAY ","
-SAY C13
-SAY "\n"
-INC C5
-REWIND
-WRITE 999,C8
-WRITE C13,C7
-WRITE 0,C9
-JUMP ordered-printout-pass-element
-
-ordered-printout-pass-element:
-NEXT
-JUMP-IF-EOF ordered-printout-pass
-READ-PROP 1,C10
-READ-PROP 2,C11
-# Compare the two values and jump to the setter if the first is smaller
-JUMP-IF-LT check-if-above-min,C11,C8
-WRITE C11,C8
-# Go to the next element
-INC C6
-JUMP-IF-EQ ordered-printout-pass,C6,C1
-JUMP ordered-printout-pass-element
-
-check-if-above-min:
-WRITE C11,C8
-JUMP-IF-LE ordered-printout-pass-element,C11,C7
-JUMP set-min-value
-
-set-min-value:
-WRITE C10,C9
-WRITE C11,C13
-
-JUMP ordered-printout-pass-element
 
 finish:
-STOP
+JUMP-IF-GT print-one-back,C20,0
+SAY C99

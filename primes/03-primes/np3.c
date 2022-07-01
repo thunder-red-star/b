@@ -3,28 +3,25 @@
 #include <math.h>
 
 int main(int argc, char *argv[]) {
-    int primeCount = 0;
-    int startValue = 2;
+    int primeCount = 1;
+    int startValue = 3;
     if (argc < 2) {
         printf("You didn't provide any arguments!\n");
         return 1;
     }
     int endValue = atoi(argv[1]);
+    printf("Searching for %d primes...\n", endValue);
     if (endValue < 2) {
         printf("You need to enter a number greater than 1!\n");
         return 1;
     }
-    // We only need to check primes, because other numbers are multiples of prime numbers.
-    int primes[endValue];
+    int *primes = malloc(sizeof(int) * endValue);
+    primes[0] = 2;
     while (primeCount < endValue) {
-        if (startValue % 2 == 0 && startValue != 2) {
-            startValue++;
-            continue;
-        }
         int isPrime = 1;
-        int maxDivisor = (int) sqrt(startValue) + 1;
+        int squareRoot = (int) sqrt(startValue);
         for (int i = 0; i < primeCount; i++) {
-            if (primes[i] > maxDivisor) {
+            if (primes[i] > squareRoot) {
                 break;
             }
             if (startValue % primes[i] == 0) {
@@ -33,11 +30,12 @@ int main(int argc, char *argv[]) {
             }
         }
         if (isPrime) {
+            primes[primeCount] = startValue;
             primeCount++;
-            primes[primeCount - 1] = startValue;
         }
-        startValue += 1;
+        startValue += 2;
     }
-    printf("%d\n", startValue - 1);
+    printf("The %dth prime is %d\n", endValue, primes[endValue - 1]);
+    free(primes);
     return 0;
 }

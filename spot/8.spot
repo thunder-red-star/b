@@ -1,0 +1,12 @@
+WRITE 0,C1
+WRITE 0,C2
+JUMP read-to-cards
+
+parse-file-and-find-frequencies:
+JUMP-IF-EOF rest-of-stats
+NEXT
+READ-PROP 2,C3
+INC C1
+ADD C2,C3,C2
+JUMP-IF-EQ
+JUMP parse-file-and-find-frequencies
