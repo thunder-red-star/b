@@ -27,7 +27,7 @@ int sieve(int n) {
     k = 1;
     for (i = 3; i < n; i += 2) {
         // First convert the index to the actual number we want to check.
-        if ((ba->bits[i / 8] & (1 << (i % 8))) != 0) {
+        if ((ba->bits[(i / 2 + 2) / 8] & (1 << ((i / 2 + 2) % 8))) != 0) {
             for (j = i * i; j < n; j += i * 2) {
                 ba->bits[(j / 2 + 2) / 8] |= (1 << ((j / 2 + 2) % 8));
             }
