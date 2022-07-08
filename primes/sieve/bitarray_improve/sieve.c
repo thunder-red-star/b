@@ -12,13 +12,13 @@
 // 0, 1, 2, 3, 5, 7, 9, 11, ...
 
 int sieve(int n) {
-    char* bits = calloc(sizeof(unsigned char), ((n / 2 - 1) / 8 + 1));
+    char* bits = calloc(sizeof(unsigned char), (((n >> 1) - 1) >> 3) + 1);
     register long int i, j, k;
     k = 1;
     for (i = 3; i < n; i += 2) {
-        if ((bits[(i / 2 - 1) / 8] & (1 << ((i / 2 - 1) % 8))) != 0) continue;
-        for (j = i * i; j < n; j += i * 2) {
-            bits[(j / 2 - 1) / 8] |= (1 << ((j / 2 - 1) % 8));
+        if ((bits[((i >> 1) - 1) >> 3] & (1 << (((i >> 1) - 1) % 8))) != 0) continue;
+        for (j = i * i; j < n; j += i << 1) {
+            bits[((j >> 1) - 1) >> 3] |= (1 << (((j >> 1) - 1) % 8));
         }
         k++;
     }
