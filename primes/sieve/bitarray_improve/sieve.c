@@ -24,14 +24,12 @@ int sieve(int n) {
     set(ba, 0, 1);
     set(ba, 1, 1);
     set(ba, 2, 0);
-    k = 0;
+    k = 1;
     for (i = 3; i < n; i += 2) {
         // First convert the index to the actual number we want to check.
         if (!get(ba, i / 2 + 2)) {
-            int idx = 0;
             for (j = i * i; j < n; j += i * 2) {
-                idx = j / 2 + 2;
-                ba->bits[idx / 8] |= (1 << (idx % 8));
+                ba->bits[(j / 2 + 2) / 8] |= (1 << ((j / 2 + 2) % 8));
             }
             k++;
         } else {
