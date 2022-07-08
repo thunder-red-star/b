@@ -10,17 +10,15 @@ extern struct bitarray *bitarray_create(int size) {
 }
 
 extern void set(const struct bitarray *ba, int index, int value) {
-    unsigned char mask = 1 << (index % 8);
     if (value) {
-        ba->bits[index / 8] |= mask;
+        ba->bits[index / 8] |= (1 << (index % 8));
     } else {
-        ba->bits[index / 8] &= ~mask;
+        ba->bits[index / 8] &= ~(1 << (index % 8));
     }
 }
 
 extern int get(const struct bitarray *ba, int index) {
-    unsigned char mask = 1 << (index % 8);
-    return (ba->bits[index / 8] & mask) != 0;
+    return (ba->bits[index / 8] & (1 << (index % 8)) != 0;
 }
 
 extern void setAll(struct bitarray *ba, int value) {
