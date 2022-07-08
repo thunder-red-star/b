@@ -22,24 +22,23 @@ int sieve(int n) {
     struct bitarray *ba = bitarray_create((n / 2) + 2);
     long int i, j, k;
     int ba_length = (n / 2) + 2;
-    setAll(ba, 1);
-    set(ba, 0, 0);
-    set(ba, 1, 0);
-    set(ba, 2, 1);
+    set(ba, 0, 1);
+    set(ba, 1, 1);
+    set(ba, 2, 0);
     for (i = 3; i < n; i += 2) {
         // First convert the index to the actual number we want to check.
-        if (get(ba, i / 2 + 2)) {
+        if (!get(ba, i / 2 + 2)) {
             int idx = 0;
             for (j = i * i; j < n; j += i * 2) {
                 idx = j / 2 + 2;
-                set(ba, idx, 0);
+                set(ba, idx, 1);
             }
         } else {
             continue;
         }
     }
     for (i = 0, k = 0; i < ba_length; i++) {
-        if (get(ba, i)) {
+        if (!get(ba, i)) {
             k++;
         }
     }
