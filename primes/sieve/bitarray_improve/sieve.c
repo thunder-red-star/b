@@ -21,10 +21,10 @@ void printNumbers(int len) {
 int sieve(int n) {
     struct bitarray *ba = bitarray_create((n / 2) + 2);
     long int i, j, k;
-    int ba_length = (n / 2) + 2;
     set(ba, 0, 1);
     set(ba, 1, 1);
     set(ba, 2, 0);
+    k = 0;
     for (i = 3; i < n; i += 2) {
         // First convert the index to the actual number we want to check.
         if (!get(ba, i / 2 + 2)) {
@@ -33,13 +33,9 @@ int sieve(int n) {
                 idx = j / 2 + 2;
                 ba->bits[idx / 8] |= (1 << (idx % 8));
             }
+            k++;
         } else {
             continue;
-        }
-    }
-    for (i = 0, k = 0; i < ba_length; i++) {
-        if (!get(ba, i)) {
-            k++;
         }
     }
     destroy(ba);
