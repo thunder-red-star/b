@@ -4,7 +4,7 @@
 
 extern struct bitarray *bitarray_create(int size) {
     struct bitarray *ba = malloc(sizeof(struct bitarray));
-    ba->bits = malloc(sizeof(unsigned char) * (size / 8 + 1));
+    ba->bits = calloc(sizeof(unsigned char), (size / 8 + 1));
     ba->size = size;
     return ba;
 }

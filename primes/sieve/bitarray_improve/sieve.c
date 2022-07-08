@@ -11,13 +11,6 @@
 // The numbers our bitarray will store this time will look like this:
 // 0, 1, 2, 3, 5, 7, 9, 11, ...
 
-void printNumbers(int len) {
-    printf("0 1 2 ");
-    for (int i = 3; i < len; i += 2) {
-        printf("%d ", i);
-    }
-}
-
 int sieve(int n) {
     struct bitarray *ba = bitarray_create((n / 2) + 2);
     long int i, j, k;
