@@ -31,7 +31,11 @@ int sieve(int n) {
             int idx = 0;
             for (j = i * i; j < n; j += i * 2) {
                 idx = j / 2 + 2;
-                set(ba, idx, 1);
+                if (ba->bits[idx / 8] & (1 << (idx % 8))) {
+                    ba->bits[idx / 8] |= (1 << (idx % 8));
+                } else {
+                    ba->bits[idx / 8] &= ~(1 << (idx % 8));
+                }
             }
         } else {
             continue;
