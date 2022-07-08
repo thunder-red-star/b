@@ -5,6 +5,7 @@
 // It is based on the following observation:
 // If we know the first few primes, we can easily determine the rest.
 
+
 int sieve(int n) {
     int *primes = malloc(sizeof(int) * n);
     long i, j, k;
