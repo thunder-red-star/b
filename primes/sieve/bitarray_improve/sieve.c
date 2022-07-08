@@ -32,8 +32,6 @@ int sieve(int n) {
                 ba->bits[(j / 2 + 2) / 8] |= (1 << ((j / 2 + 2) % 8));
             }
             k++;
-        } else {
-            continue;
         }
     }
     destroy(ba);
