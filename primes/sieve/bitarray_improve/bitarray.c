@@ -18,7 +18,7 @@ extern void set(const struct bitarray *ba, int index, int value) {
 }
 
 extern int get(const struct bitarray *ba, int index) {
-    return (ba->bits[index / 8] & (1 << (index % 8)) != 0;
+    return (ba->bits[index / 8] & (1 << (index % 8))) != 0;
 }
 
 extern void setAll(struct bitarray *ba, int value) {
