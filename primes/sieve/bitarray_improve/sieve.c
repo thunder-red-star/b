@@ -12,21 +12,19 @@
 // 0, 1, 2, 3, 5, 7, 9, 11, ...
 
 int sieve(int n) {
-    struct bitarray *ba = bitarray_create((n / 2) + 2);
+    char* bits = calloc(sizeof(unsigned char), ((n / 2 - 1) / 8 + 1));
     long int i, j, k;
-    set(ba, 0, 1);
-    set(ba, 1, 1);
-    set(ba, 2, 0);
     k = 1;
     for (i = 3; i < n; i += 2) {
         // First convert the index to the actual number we want to check.
-        if ((ba->bits[(i / 2 + 2) / 8] & (1 << ((i / 2 + 2) % 8))) != 0) continue;
+        int idx = (i / 2 + 2);
+        if ((bits[idx / 8] & (1 << (idx % 8))) != 0) continue;
         for (j = i * i; j < n; j += i * 2) {
-            ba->bits[(j / 2 + 2) / 8] |= (1 << ((j / 2 + 2) % 8));
+            bits[(j / 2 + 2) / 8] |= (1 << ((j / 2 + 2) % 8));
         }
         k++;
     }
-    destroy(ba);
+    free(bits);
     return k;
 }
 
