@@ -1,0 +1,7 @@
+100000000 primes
+
+Time: 1.320 seconds
+Memory usage: 6,251,041 bytes
+
+Memory improvement factor: 63.98x
+Computation time improvement percentage: 47% (relative to original Sieve of Eratosthenes)
