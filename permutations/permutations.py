@@ -29,11 +29,15 @@ def nth_perm_helper(array, n):
 
 # This function finds the nth permutation of a provided array, without generating all permutations
 def nth_permutation(array, n):
+    if n < 0 or n > factorial(len(array)) - 1:
+        return None
+        # TODO: raise an exception
+        # raise Exception("Invalid n, must be between 0 and " + str(factorial(len(array)) - 1))
     return nth_perm_helper(array, n)
 
 def main():
     array = [1, 2, 3, 4, 5]
-    n = 24
+    n = 115
     print(nth_permutation(array, n))
     # should print [5, 4, 3, 2, 1]
 
